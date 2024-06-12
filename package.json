@@ -1,5 +1,32 @@
 {
+  "_from": "@objj/utils",
+  "_id": "@objj/utils@1.0.19",
+  "_inBundle": false,
+  "_integrity": "sha512-ewmPjIx0fvr4YiBqR9wpY3X6W+vTMIXaJ5sEDdOa6fvUbyzPPEW1N6gFCnygYvTxcCwPJYGOuj90AGECu6fs6Q==",
+  "_location": "/@objj/utils",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@objj/utils",
     "name": "@objj/utils",
-    "version": "1.0.19",
-    "main": "index.js"
+    "escapedName": "@objj%2futils",
+    "scope": "@objj",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@objj/utils/-/utils-1.0.19.tgz",
+  "_shasum": "368479c6323176086b70922ed3d002d40ebb91fe",
+  "_spec": "@objj/utils",
+  "_where": "/Users/martin/Developer/Boplats/Node",
+  "bundleDependencies": false,
+  "deprecated": false,
+  "main": "index.js",
+  "name": "@objj/utils",
+  "version": "1.0.20"
 }
