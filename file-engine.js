@@ -6,7 +6,7 @@ const file = require('./file');
 // use the "file" module as the exports object, we're adding to it.
 exports = file;
 
-const ByteString = require("binary").ByteString;
+//const ByteString = require("binary").ByteString;
 
 const nodefs = global.system.nodejs.require('fs'); // access the node fs module.
 
