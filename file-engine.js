@@ -10,9 +10,9 @@ exports = file;
 
 const nodefs = require('fs'); // access the node fs module.
 
-const bootstrap = global.system.bootstrap; // access functions defined in the node bootstrap.js.
-const throwIfAbnormal = bootstrap.throwIfAbnormal;
-const stringify       = bootstrap.stringify;
+//const bootstrap = global.system.bootstrap; // access functions defined in the node bootstrap.js.
+//const throwIfAbnormal = bootstrap.throwIfAbnormal;
+//const stringify       = bootstrap.stringify;
 
 exports.cwd = function () {
     return process.cwd();
