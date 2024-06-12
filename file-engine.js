@@ -8,7 +8,7 @@ exports = file;
 
 //const ByteString = require("binary").ByteString;
 
-const nodefs = global.system.nodejs.require('fs'); // access the node fs module.
+const nodefs = require('fs'); // access the node fs module.
 
 const bootstrap = global.system.bootstrap; // access functions defined in the node bootstrap.js.
 const throwIfAbnormal = bootstrap.throwIfAbnormal;
