@@ -1,7 +1,7 @@
 "use strict";
 
 const file = require('./file');
-const io   = require('./io');
+//const io   = require('./io');
 
 // use the "file" module as the exports object, we're adding to it.
 exports = file;
