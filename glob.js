@@ -175,8 +175,6 @@ var globTree = function (paths) {
     );
 };
 
-(fs.existsSync(path) && fs.lstatSync(path).isDirectory())
-
 var globHeredity = function (paths) {
     return Array.prototype.concat.apply(
         [],
