@@ -11,7 +11,7 @@ exports.copyRecursiveSync = function (src, dest) {
       fs.mkdirSync(dest, { recursive: true });
       fs.readdirSync(src).forEach(function(childItemName)
       {
-        copyRecursiveSync(path.join(src, childItemName), path.join(dest, childItemName));
+        exports.copyRecursiveSync(path.join(src, childItemName), path.join(dest, childItemName));
       });
     }
     else
@@ -23,10 +23,10 @@ exports.copyRecursiveSync = function (src, dest) {
 exports.cp_r = function(/*String*/ from, /*String*/ to)
 {
     if (fs.existsSync(to))
-        rm_rf(to);
+        exports.rm_rf(to);
 
     if (fs.lstatSync(from).isDirectory())
-        copyRecursiveSync(from, to);
+        exports.copyRecursiveSync(from, to);
     else
     {
         try
@@ -35,7 +35,7 @@ exports.cp_r = function(/*String*/ from, /*String*/ to)
         }
         catch (e)
         {
-            print(e + fs.existsSync(from) + " " + fs.existsSync(path.dirname(to)));
+            console.log(e + fs.existsSync(from) + " " + fs.existsSync(path.dirname(to)));
         }
     }
 };
@@ -50,3 +50,13 @@ exports.mv = function(/*String*/ from, /*String*/ to)
 {
     fs.renameSync(from, to);
 };
+
+exports.rm_rf = function(/*String*/ aFilename)
+{
+    try { fs.rmSync(aFilename, {recursive: true, force: true}); }
+    catch (anException)
+    {
+        console.log(anException);
+    }
+};
+
