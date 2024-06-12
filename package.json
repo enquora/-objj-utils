@@ -1,6 +1,6 @@
 {
     "name": "@objj/utils",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "main": "index.js",
     "dependencies": {
         "minimatch": "3.0.4",

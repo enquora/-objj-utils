@@ -3,5 +3,5 @@ module.exports = {
     filelist : require('./filelist.js'),
     term : require('./term.js'),
     util : require('./util.js'),
-    file : require('./file.js')
+    glob : require('./glob.js')
  }
