@@ -1,5 +1,5 @@
 const fs = require("fs");
-const glob = require("glob");
+const glob = require("./glob");
 //const minimatch = require("minimatch");
 
 
@@ -268,7 +268,7 @@ FileList.prototype._shouldExclude = function(aFilename) {
 
         if (aPattern.match && aPattern.match(/[*?]/)) {
             // using the minimatch module instead of the fnmatch from narwhal, could be an ERRORSOURCE
-            return minimatch(aFilename, aPattern);
+            return glob.fnmatch(aPattern, aFilename); //minimatch(aFilename, aPattern);
         }
 
         if (aFilename === aPattern)
@@ -392,7 +392,7 @@ FileList.prototype.toString = function() {
 // Add matching glob patterns.
 FileList.prototype._addMatching = function(/*String*/ aPattern) {
     // could be ERRORSOURCE
-    glob.sync(aPattern).forEach(function(fileName){
+    glob.glob(aPattern).forEach(function(fileName){
         this._items.push(fileName);
     }, this);
 
