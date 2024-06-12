@@ -9,7 +9,7 @@
 
 //var io = require('io');
 
-//require("file-bootstrap");
+require("./file-bootstrap");
 
 /* streams */
 
