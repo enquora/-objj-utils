@@ -11,6 +11,8 @@
 
 require("./file-bootstrap");
 
+const fs = require("fs");
+
 /* streams */
 
 /*** RegExp.escape
@@ -234,7 +236,7 @@ exports.listTree = function (path) {
     var paths = [""];
     exports.list(path).forEach(function (child) {
         var fullPath = exports.join(path, child);
-        if (exports.isDirectory(fullPath)) {
+        if ((fs.existsSync(fullPath) && fs.lstatSync(fullPath).isDirectory())) {
             paths.push.apply(paths, exports.listTree(fullPath).map(function(p) {
                 return exports.join(child, p);
             }));
@@ -252,7 +254,7 @@ exports.listDirectoryTree = function (path) {
     var paths = [""];
     exports.list(path).forEach(function (child) {
         var fullPath = exports.join(path, child);
-        if (exports.isDirectory(fullPath)) {
+        if ((fs.existsSync(fullPath) && fs.lstatSync(fullPath).isDirectory())) {
             paths.push.apply(paths, exports.listDirectoryTree(fullPath).map(function(p) {
                 return exports.join(child, p);
             }));
@@ -356,7 +358,7 @@ exports.copyTree = function(source, target, path) {
     var targetPath = (target = exports.path(target)).join(path);
     if (exports.exists(targetPath))
         throw new Error("file exists: " + targetPath);
-    if (exports.isDirectory(sourcePath)) {
+    if ((fs.existsSync(sourcePath) && fs.lstatSync(sourcePath).isDirectory())) {
         exports.mkdir(targetPath);
         exports.list(sourcePath).forEach(function (name) {
             exports.copyTree(source, target, exports.join(path, name));
@@ -421,7 +423,8 @@ var globTree = function (paths) {
     return Array.prototype.concat.apply(
         [],
         paths.map(function (path) {
-            if (!exports.isDirectory(path))
+            
+            if (!(fs.existsSync(path) && fs.lstatSync(path).isDirectory()))
                 return [];
             return exports.listDirectoryTree(path).map(function (child) {
                 return exports.join(path, child);
@@ -429,6 +432,8 @@ var globTree = function (paths) {
         })
     );
 };
+
+(fs.existsSync(path) && fs.lstatSync(path).isDirectory())
 
 var globHeredity = function (paths) {
     return Array.prototype.concat.apply(
@@ -458,7 +463,7 @@ var globPattern = function (paths, pattern, flags) {
     // print("PATTERN={"+pattern+"} REGEXP={"+re+"}");
     // use concat to flatten result arrays
     return Array.prototype.concat.apply([], paths.map(function (path) {
-        if (!exports.isDirectory(path))
+        if (!(fs.existsSync(path) && fs.lstatSync(path).isDirectory()))
             return [];
         return [/*".", ".."*/].concat(exports.list(path)).filter(function (name) {
             return re.test(name);
@@ -482,7 +487,7 @@ exports.rmtree = function(path) {
     if (exports.isLink(path)) {
         exports.remove(path);
     } else
-    if (exports.isDirectory(path)) {
+    if ((fs.existsSync(path) && fs.lstatSync(path).isDirectory())) {
         exports.list(path).forEach(function (name) {
             exports.rmtree(exports.join(path, name));
         });
