@@ -60,3 +60,7 @@ exports.rm_rf = function(/*String*/ aFilename)
     }
 };
 
+exports.enquote = function(word)
+{
+    return "'" + String(word).replace(/'/g, "'\"'\"'") + "'";
+}
