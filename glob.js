@@ -115,6 +115,7 @@ exports.patternToRegExp = function (pattern, flags) {
 };
 
 exports.glob = function (pattern, flags) {
+    debugger;
     pattern = String(pattern || '');
     var parts = exports.split(pattern),
         paths = ['.'];
