@@ -224,10 +224,10 @@ exports.copy = function (source, target) {
     }
 };
 
-var list = exports.list;
+/* var list = exports.list;
 exports.list = function (path) {
     return list(String(path || '') || ".");
-};
+}; */
 
 exports.listTree = function (path) {
     path = String(path || '');
