@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // from stackoverflow
-global.copyRecursiveSync = function (src, dest) {
+exports.copyRecursiveSync = function (src, dest) {
     var exists = fs.existsSync(src);
     var stats = exists && fs.statSync(src);
     var isDirectory = exists && stats.isDirectory();
@@ -20,7 +20,7 @@ global.copyRecursiveSync = function (src, dest) {
     }
 };
 
-global.cp_r = function(/*String*/ from, /*String*/ to)
+exports.cp_r = function(/*String*/ from, /*String*/ to)
 {
     if (fs.existsSync(to))
         rm_rf(to);
@@ -40,13 +40,13 @@ global.cp_r = function(/*String*/ from, /*String*/ to)
     }
 };
 
-global.cp = function(/*String*/ from, /*String*/ to)
+exports.cp = function(/*String*/ from, /*String*/ to)
 {
     fs.copyFileSync(from, to)
 //    FILE.chmod(to, FILE.mod(from));
 };
 
-global.mv = function(/*String*/ from, /*String*/ to)
+exports.mv = function(/*String*/ from, /*String*/ to)
 {
     fs.renameSync(from, to);
 };

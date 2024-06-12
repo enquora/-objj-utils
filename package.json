@@ -28,5 +28,5 @@
   "deprecated": false,
   "main": "index.js",
   "name": "@objj/utils",
-  "version": "1.0.20"
+  "version": "1.0.21"
 }
