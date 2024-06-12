@@ -115,7 +115,6 @@ exports.patternToRegExp = function (pattern, flags) {
 };
 
 exports.glob = function (pattern, flags) {
-    debugger;
     pattern = String(pattern || '');
     var parts = exports.split(pattern),
         paths = ['.'];
@@ -222,7 +221,7 @@ exports.listDirectoryTree = function (path) {
     path = String(path || '');
     if (!path)
         path = ".";
-    var paths = ["."];
+    var paths = [""];
     exports.list(path).forEach(function (child) {
         var fullPath = exports.join(path, child);
         if ((fs.existsSync(fullPath) && fs.lstatSync(fullPath).isDirectory())) {
@@ -349,7 +348,12 @@ exports.resolve = function () {
     }
     path = parents.concat(children).join(exports.SEPARATOR);
     if (path) leaf = exports.SEPARATOR + leaf;
-    return root + path + leaf;
+    var ret = root + path + leaf;
+    if (ret === "") {
+        return ".";
+    } else {
+        return ret;
+    }
 };
 
 exports.normal = function (path) {
